@@ -1,0 +1,133 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div>
+      <h1 style="text-align: left">All Customers</h1>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table
+      class="table table-hover table-sm"
+      datatable
+      [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"
+    >
+      <thead class="thead-light">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>DOB</th>
+          <th>SSN</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>State</th>
+          <th>Zip Ext</th>
+          <th>Zip Code</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.firstName }}</td>
+          <td>{{ customer.lastName }}</td>
+          <td>{{ customer.dob }}</td>
+          <td>
+            <button *ngIf="!customer.isAuthenticated" (click)="showSSNModal(customer, customer.ssn)">View</button>
+            <label *ngIf="customer.isAuthenticated">{{customer.ssn}}</label>
+          </td>
+          <td>{{ customer.city }}</td>
+          <td>{{ customer.country }}</td>
+          <td>{{ customer.state }}</td>
+          <td>{{ customer.zipPin }}</td>
+          <td>{{ customer.zipExt }}</td>
+          <td>
+            <button
+              (click)="deleteCustomer(customer.customerId)"
+              class="btn btn-danger"
+            >
+              <i class="fa fa-futboll-0">Delete</i>
+            </button>
+          </td>
+          <td>
+            <button
+              (click)="updateCustomer(customer.customerId)"
+              class="btn btn-info"
+              data-toggle="modal"
+            >
+              Update
+            </button>
+          </td>
+          <td>
+            <div *ngIf="customer.active">
+              <button
+                (click)="deactivateCustomer(customer.customerId)"
+                class="btn btn-warning"
+                data-toggle="modal"
+              >
+                Deactivate
+              </button>
+            </div>
+            <div *ngIf="!customer.active">
+              <button
+                (click)="activateCustomer(customer.customerId)"
+                class="btn btn-success"
+                data-toggle="modal"
+              >
+                Activate
+              </button>
+            </div>
+          </td>
+          <td>
+            <button
+              (click)="createAccount(customer.customerId)"
+              class="btn btn-info"
+              data-toggle="modal"
+            >
+              Create Account
+            </button>
+          </td>
+         
+        </tr>
+      </tbody>
+      <br />
+    </table>
+  </div>
+</div>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Angular Bootstrap Modal Popup
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <strong
+        >Are you sure you want to delete
+        <span class="text-primary">"Agatha Harkness"</span> profile?</strong
+      >
+    </p>
+
+    <p>All data related to west view profile will be removed permanently.</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('Save click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

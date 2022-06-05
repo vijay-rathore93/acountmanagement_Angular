@@ -1,0 +1,80 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div>
+        <h1 style="text-align: left">All Accounts</h1>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table
+        class="table table-hover table-sm"
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+      >
+        <thead class="thead-light">
+          <tr>
+            <th>Customer Name</th>
+            <th>Account Number</th>
+            <th>Bank Name</th>
+            <th>IFSC Code</th>
+            <th>Branch Code</th>
+            <th>Bank Address</th>
+            <th>Total Amount($)</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{ account.customerName }}</td>
+            <td>{{ account.accountNumber }}</td>
+            <td>{{ account.bankName }}</td>
+            <td>{{ account.ifscCode }}</td>
+            <td>{{account.branchCode}}</td>
+            <td>{{ account.bankAddress }}</td>
+            <td>{{ account.totalAmount }}</td>
+            <td>
+              <button
+                (click)="deleteCustomer(account.accountId)"
+                class="btn btn-danger"
+              >
+                <i class="fa fa-futboll-0">Delete</i>
+              </button>
+            </td>
+            <td>
+              <button
+                (click)="updateCustomer(account.accountId)"
+                class="btn btn-info"
+                data-toggle="modal"
+              >
+                Update
+              </button>
+            </td>
+            <td>
+              <div *ngIf="account.isActive">
+                <button
+                  (click)="deactivateCustomer(account.accountNumber)"
+                  class="btn btn-warning"
+                  data-toggle="modal"
+                >
+                  Deactivate
+                </button>
+              </div>
+              <div *ngIf="!account.isActive">
+                <button
+                  (click)="activateCustomer(account.accountNumber)"
+                  class="btn btn-success"
+                  data-toggle="modal"
+                >
+                  Activate
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <br />
+      </table>
+    </div>
+  </div>
+  

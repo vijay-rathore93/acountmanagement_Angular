@@ -1,0 +1,310 @@
+<div class="container">
+  <div class="panel panel-default">
+    <form [formGroup]="customerProfileForm" (ngSubmit)="onSubmit()">
+      <div class="panel-heading">
+        <h4 class="modal-title" id="editUserId">New Customer Registration</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row" id="usersCreateID">
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">First Name</label
+              ><label style="color: red">*</label>
+              <input
+                type="text"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="Enter First Full Name"
+                maxlength="119"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.firstName?.valid &&
+                  (customerProfileForm.controls.firstName?.dirty ||
+                    customerProfileForm.controls.firstName?.touched)
+                "
+              >
+                First Name is required
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Middle Name</label>
+              <input
+                type="text"
+                formControlName="middleName"
+                class="form-control"
+                placeholder="Enter Middle  Name"
+                maxlength="119"
+              />
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Last Name</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Enter Last  Name"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.lastName?.valid &&
+                  (customerProfileForm.controls.lastName?.dirty ||
+                    customerProfileForm.controls.lastName?.touched)
+                "
+              >
+                Last Name is required
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">DOB</label
+              ><label style="color: red">* </label>
+              <input
+                type="date"
+                formControlName="dob"
+                class="form-control"
+                placeholder="Enter DOB"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.dob?.valid &&
+                  (customerProfileForm.controls.dob?.dirty ||
+                    customerProfileForm.controls.dob?.touched)
+                "
+                >DOB is required</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!--second row start-->
+
+        <div class="row" id="usersCreateID">
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label for="txtEmailid" class="textLabel">Country</label>
+              <label style="color: red">* </label>
+              <select class="form-control" formControlName="country">
+                <option value="">---Select Country---</option>
+                <option value="US">US</option>
+                <option value="Canada">Canada</option></select
+              ><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.country?.valid &&
+                  (customerProfileForm.controls.country?.dirty ||
+                    customerProfileForm.controls.country?.touched)
+                "
+                >Country is required</span
+              >
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">State/Province</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="state"
+                class="form-control"
+                placeholder="Enter State"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.state?.valid &&
+                  (customerProfileForm.controls.state?.dirty ||
+                    customerProfileForm.controls.state?.touched)
+                "
+                >State is required</span
+              >
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">City</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="city"
+                class="form-control"
+                placeholder="Enter City"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.city?.valid &&
+                  (customerProfileForm.controls.city?.dirty ||
+                    customerProfileForm.controls.city?.touched)
+                "
+                >City is required</span
+              >
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Zip Ext.</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="zipExt"
+                class="form-control"
+                placeholder="Enter Zip Ext."
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.zipExt?.valid &&
+                  (customerProfileForm.controls.zipExt?.dirty ||
+                    customerProfileForm.controls.zipExt?.touched)
+                "
+                >Zip Ext. is required</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Second row ended-->
+
+        <!-- Third row started-->
+
+        <div class="row" id="usersCreateID">
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Zip/Pin Code</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="zipPin"
+                class="form-control"
+                placeholder="Enter Zip/Pin Code"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.zipPin?.valid &&
+                  (customerProfileForm.controls.zipPin?.dirty ||
+                    customerProfileForm.controls.zipPin?.touched)
+                "
+                >Zip/Pin Code is required</span
+              >
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">SSN Number</label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="ssn"
+                class="form-control"
+                placeholder="Enter SSN Number"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.ssn?.valid &&
+                  (customerProfileForm.controls.ssn?.dirty ||
+                    customerProfileForm.controls.ssn?.touched)
+                "
+                >SSN Number is required</span
+              >
+            </div>
+          </div>
+          <div *ngIf="!isUpdateCustomer" class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Document Type</label
+              ><label style="color: red">* </label>
+              <select class="form-control" formControlName="documentType">
+                <option value="">---Select Document Type---</option>
+                <option value="DL">DL</option>
+                <option value="Passport">Passport</option>
+              </select>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="
+                !customerProfileForm.controls.documentType?.valid &&
+                (customerProfileForm.controls.documentType?.dirty ||
+                  customerProfileForm.controls.documentType?.touched)
+              "
+              >Document Type is required</span
+            >
+          </div>
+          <div *ngIf="!isUpdateCustomer" class="col-xs-3">
+            <div class="form-group">
+              <label class="textLabel">Document </label
+              ><label style="color: red">*</label>
+              <input
+                type="file"
+                formControlName="fileName"
+                (change)="selectFile($event)"
+                class="form-control"
+                placeholder="Select document"
+                maxlength="119"
+              /><span
+                class="text-danger"
+                *ngIf="
+                  !customerProfileForm.controls.fileName?.valid &&
+                  (customerProfileForm.controls.fileName?.dirty ||
+                    customerProfileForm.controls.fileName?.touched)
+                "
+                >Document is required</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Third row ended-->
+        <!-- Fourth Row started-->
+        <div class="row" id="usersCreateID">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="textLabel">Address-1 </label
+              ><label style="color: red">* </label>
+              <input
+                type="text"
+                formControlName="address1"
+                class="form-control"
+                placeholder="Enter Address-1"
+                maxlength="119"
+              />
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="textLabel">Address-2 </label>
+              <input
+                type="text"
+                formControlName="address2"
+                class="form-control"
+                placeholder="Enter Addres-2"
+                maxlength="119"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Fourth Row ended-->
+      </div>
+      <div class="panel-footer" id="userfooterID">
+        <button
+          type="submit"
+          value="Submit"
+          class="btn btn-primary"
+          [disabled]="!customerProfileForm.valid"
+        >
+          Create
+        </button>
+       
+      </div>
+    </form>
+  </div>
+</div>

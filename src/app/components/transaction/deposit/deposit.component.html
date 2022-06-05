@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="panel panel-default">
+      <form [formGroup]="accountProfileForm" (ngSubmit)="onSubmit()">
+        <div class="panel-heading">
+          <h4 class="modal-title" id="editUserId">Deposit Amount</h4>
+        </div>
+        <div class="panel-body">
+          <div class="row" id="usersCreateID">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="textLabel">Account Number</label
+                ><label style="color: red">*</label>
+                <select name="bank" 
+                #t formControlName="fromAccount" class="form-control" style="width: 100%;" 
+                (change)="onChange(t.value)">
+                    <option *ngFor="let bank of banks"  [value]="bank.accountNumber">{{bank.accountNumber}}</option>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.fromAccount?.valid &&
+                    (accountProfileForm.controls.fromAccount?.dirty ||
+                      accountProfileForm.controls.fromAccount?.touched)
+                  "
+                >
+                  Account Number is required
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <div><label class="textLabel">Bank Name</label
+                ><label style="color: red">* </label></div>
+               
+               
+                <input
+                  type="text"
+                  formControlName="bankName"
+                  class="form-control"
+                  maxlength="119"
+                 
+                />
+               
+               
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.bankName?.valid &&
+                    (accountProfileForm.controls.bankName?.dirty ||
+                      accountProfileForm.controls.bankName?.touched)
+                  "
+                >
+                  Bank Name is required
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="textLabel">IFSC Code</label
+                ><label style="color: red">* </label>
+                <input
+                  type="text"
+                  formControlName="ifscCode"
+                  class="form-control"
+                  maxlength="119"
+                /><span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.ifscCode?.valid &&
+                    (accountProfileForm.controls.ifscCode?.dirty ||
+                      accountProfileForm.controls.ifscCode?.touched)
+                  "
+                  >IFSC is required</span
+                >
+              </div>
+            </div>
+          </div>
+  
+          <!--second row start-->
+  
+          <div class="row" id="usersCreateID">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="txtEmailid" class="textLabel">Branch Code</label>
+                <label style="color: red">* </label>
+                <input
+                  type="text"
+                  formControlName="branchCode"
+                  class="form-control"
+                  maxlength="119"
+                /><span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.branchCode?.valid &&
+                    (accountProfileForm.controls.branchCode?.dirty ||
+                      accountProfileForm.controls.branchCode?.touched)
+                  "
+                  >Branch code is required</span
+                >
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="textLabel">Address</label
+                ><label style="color: red">* </label>
+                <input
+                  type="text"
+                  formControlName="bankAddress"
+                  class="form-control"
+                  maxlength="119"
+                /><span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.bankAddress?.valid &&
+                    (accountProfileForm.controls.bankAddress?.dirty ||
+                      accountProfileForm.controls.bankAddress?.touched)
+                  "
+                  >Address is required</span
+                >
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="textLabel">Deposit Amount ($)</label
+                ><label style="color: red">* </label>
+                <input
+                  type="text"
+                  formControlName="totalAmount"
+                  class="form-control"
+                  placeholder="Enter Amount"
+                  maxlength="119"
+                /><span
+                  class="text-danger"
+                  *ngIf="
+                    !accountProfileForm.controls.totalAmount?.valid &&
+                    (accountProfileForm.controls.totalAmount?.dirty ||
+                      accountProfileForm.controls.totalAmount?.touched)
+                  "
+                  >Deposit Amount is required</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Second row ended-->
+        </div>
+        <div class="panel-footer" id="userfooterID">
+          <button
+            type="submit"
+            value="Submit"
+            class="btn btn-primary"
+            [disabled]="!accountProfileForm.valid"
+          >
+            Create
+          </button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+  

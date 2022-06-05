@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div>
+        <h1 style="text-align: left">All Transactions</h1>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table
+        class="table table-hover table-sm"
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+      >
+        <thead class="thead-light">
+          <tr>
+            <th>TxId</th>
+            <th>Account</th>
+            <th>Tx Date</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Amount ($)</th>
+            <th></th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td>{{ transaction.txId }}</td>
+            <td>{{ transaction.fromAccount }}</td>
+            <td>{{ transaction.transactionDate }}</td>
+            <td>{{transaction.status}}</td>
+            <td>{{ transaction.type }}</td>
+            <td>{{ transaction.amountTobeTransferred }}</td>
+            <td>
+                <div *ngIf="transaction.type!='VOID'">
+              <button
+                (click)="voidTransaction(transaction.txId)"
+                class="btn btn-danger"
+              >
+                <i class="fa fa-futboll-0">Void</i>
+              </button>
+            </div>
+            </td>
+            
+          </tr>
+        </tbody>
+        <br />
+      </table>
+    </div>
+  </div>
+  

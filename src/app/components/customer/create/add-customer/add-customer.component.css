@@ -1,0 +1,3 @@
+.ng-touched .ng-valid{
+    border-color: 1px solid red;
+}
